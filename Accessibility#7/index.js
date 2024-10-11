@@ -11,13 +11,12 @@ $(document).ready(function () {
 
     $("timer").text(countdown);
 
-    if (countdown > 0) {
+    if (countdown >= 0) {
       interval = setInterval(function () {
+        console.log(countdown);
         countdown--;
-        $("#timer").text(countdown);
-        if (countdown <= 0) {
+        if (countdown < 0) {
           clearInterval(interval);
-          $("#timer").text("Time's up!");
         }
       }, 1000);
     }
