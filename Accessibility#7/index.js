@@ -1,24 +1,19 @@
-$(document).ready(function () {
-  let interval;
+const startCountdown = (a, b) => {
+  let intervalSum = a + b;
 
-  $("#submit").click(function () {
-    if (interval) {
-      clearInterval(interval);
+  const logCountdown = () => {
+    if (intervalSum >= 0) {
+      console.log(intervalSum);
+      intervalSum -= 1;
+    } else {
+      clearInterval(countdown);
     }
-    const int1 = parseInt($("#integer-one").val(), 10) || 0;
-    const int2 = parseInt($("#integer-two").val(), 10) || 0;
-    let countdown = int1 + int2;
+  };
 
-    $("timer").text(countdown);
+  const countdown = setInterval(logCountdown, 1000);
+};
 
-    if (countdown >= 0) {
-      interval = setInterval(function () {
-        console.log(countdown);
-        countdown--;
-        if (countdown < 0) {
-          clearInterval(interval);
-        }
-      }, 1000);
-    }
-  });
-});
+// tests
+// startCountdown(3, 1);
+// startCountdown(0, 0);
+// startCountdown(-1, -3);
